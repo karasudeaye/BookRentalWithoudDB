@@ -34,14 +34,16 @@ namespace BookRentalWithoudDB.Data
         }
         public void Update(Student student)
         {
-            var studentInDB = data.Where(s => s.ID == student.ID)
-                .FirstOrDefault();
-
-            studentInDB.Name = student.Name;
-            studentInDB.Surname = student.Surname;
-            studentInDB.BirthDate = student.BirthDate;
-            
+            var studentInDB = data.FirstOrDefault(s => s.ID == student.ID);
+            if (studentInDB != null)
+            {
+                studentInDB.Name = student.Name;
+                studentInDB.Surname = student.Surname;
+                studentInDB.BirthDate = student.BirthDate;
+            }
         }
+
+
 
     }
 }

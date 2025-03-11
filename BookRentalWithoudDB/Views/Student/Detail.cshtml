@@ -1,19 +1,30 @@
 ﻿@model Student
 
-<table>
+<h2>Student Details</h2>
+
+<table class="table">
     <tr>
-        <td width="200">ID</td><td>@Model.ID</td>
+        <td width="200"><strong>ID</strong></td>
+        <td>@Model.ID</td>
     </tr>
     <tr>
-        <td width="200">Name</td>
+        <td><strong>Name</strong></td>
         <td>@Model.Name</td>
     </tr>
     <tr>
-        <td width="200">Surname</td>
+        <td><strong>Surname</strong></td>
         <td>@Model.Surname</td>
     </tr>
     <tr>
-        <td width="200">Birth Date</td>
+        <td><strong>Birth Date</strong></td>
         <td>@Model.BirthDate.ToLongDateString()</td>
     </tr>
 </table>
+
+<form asp-controller="Student" asp-action="Delete" asp-route-id="@Model.ID" method="post"
+      onsubmit="return confirm('Are you sure you want to delete this student?');">
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+
+
+<a asp-controller="Student" asp-action="Index" class="btn btn-secondary">Back to List</a>

@@ -1,26 +1,32 @@
 ﻿@model List<Student>
-<table>
+
+<h2>Student List</h2>
+
+
+<a asp-controller="Student" asp-action="Create" class="btn btn-primary">Create New Student</a>
+
+<table class="table">
     <thead>
         <tr>
-            <td> ID </td>
-            <td> Name </td>
-            <td> Surname </td>
-            <td> </td>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Actions</th>
         </tr>
     </thead>
-<tbody>
-    @foreach(var item in Model) {
-
-    <tr>
-        <td> @item.ID </td>
-        <td> @item.Name </td>
-        <td> @item.Surname </td>
-        <td><a asp-controller="Student" asp-action="Detail" 
-            asp-route-id="@item.ID"> Click For Detail </a></td>
-    </tr>
-
-     }
-
-</tbody>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.Name</td>
+                <td>@item.Surname</td>
+                <td>
+                    <a asp-controller="Student" asp-action="Detail" asp-route-id="@item.ID">Click For Detail</a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
 
+<a asp-controller="Student" asp-action="Create"> Add New Student</a>
